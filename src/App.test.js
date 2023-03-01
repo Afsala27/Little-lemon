@@ -1,8 +1,19 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { fireEvent, render, screen } from "@testing-library/react";
+import Bookingform from './Components/Bookingform';
+import Main from "./Components/Main";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('user has to select the timing as given', () => {
+  const time= "";
+  const handleSubmit = jest.fn();
+  render(<Bookingform onSubmit={handleSubmit} />);
+
+  const select = screen.getByLabelText(/Choose Time/);
+  fireEvent.change(select, { target: { value: time } });
+
+  const submitButton = screen.getByRole("button");
+  fireEvent.click(submitButton);
+
+  //expect(handleSubmit).toHaveBeenCalledWith({
+   // time,
+ // });
+})

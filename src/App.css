@@ -1,38 +1,128 @@
-.App {
-  text-align: center;
+
+* {
+box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+display: grid;
+background-color: rgb(255, 255, 255);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav{
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+  padding-left: revert;
+}
+
+li {
+  float: left;
+}
+
+li a{
+  display: block;
+  color: #313131;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #efeaea;
+  border-radius: 30px;
+}
+
+li a.active {
   color: white;
+  background-color: #04AA6D;
+}
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: none;
+  height: 10rem;
+  background: rgb(81, 79, 79);
+}
+.header-back{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: none;
+  height: 30rem;
+  background-color: #495E57;
+}
+ .title-set{
+  padding-left: 150px;
+}
+h1 {
+  font-size: 40pt;
+  color: #F4CE14;
+  max-width: 600px;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+h2 {
+  font-size: 20pt;
+  color: #ffffff;
+  max-width: 500px
+}
+p {
+  font-size: 18pt;
+  color: #ffffff;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  max-width: 500px;
+  margin: 1.5rem 0rem;
 }
 
-.App-link {
-  color: #61dafb;
+.primary-button {
+  padding: 0.9rem 1.75rem;
+  background-color: #F4CE14;
+  outline: none;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+.primary-button:hover {
+  background-color: rgb(234, 234, 234);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.home-image-section {
+ max-width: fit-content;
+ max-height: fit-content;
+ flex: 1;
+ padding-top: 0px;
+ padding-left: 0px;
+ padding-right: 100px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  gap: 20px;
+}
+.App{
+  display: grid;
+  place-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+@media screen and (max-width: 500px) {
+  nav {
+    float: none;
+    display: flex;
   }
-  to {
-    transform: rotate(360deg);
+  img{
+    display: none;
   }
 }
