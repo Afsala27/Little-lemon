@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Bookingform from './Components/Bookingform';
-import Main from "./Components/Main";
+
 
 test('user has to select the timing as given', () => {
   const time= "";
@@ -13,7 +13,4 @@ test('user has to select the timing as given', () => {
   const submitButton = screen.getByRole("button");
   fireEvent.click(submitButton);
 
-  //expect(handleSubmit).toHaveBeenCalledWith({
-   // time,
- // });
 })

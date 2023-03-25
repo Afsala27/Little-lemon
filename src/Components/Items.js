@@ -1,63 +1,59 @@
-/* import React from "react";
-import FullScreenSection from "./FullScreenSection";
-import { Box, Heading } from "@chakra-ui/react";
+import React from "react";
 import Card from "./Card";
 
 const projects = [
   {
-    title: "React Space",
+    title: "Greek Salad",
     description:
-      "Handy tool belt to create amazing AR components in a React app, with redux integration via middleware️",
-    getImageSrc: () => require("../images/photo1.jpg"),
+      "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
+    getImageSrc: () => require("../assets/greek salad.jpg"),
   },
   {
-    title: "React Infinite Scroll",
+    title: "Bruchetta ",
     description:
-      "A scrollable bottom sheet with virtualisation support, native animations at 60 FPS and fully implemented in JS land 🔥️",
-    getImageSrc: () => require("../images/photo2.jpg"),
+      "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. Its a must try from our end.",
+    getImageSrc: () => require("../assets/dish 6.jpg"),
   },
   {
-    title: "Photo Gallery",
+    title: "Egg Salad",
     description:
-      "A One-stop shop for photographers to share and monetize their photos, allowing them to have a second source of income",
-    getImageSrc: () => require("../images/photo3.jpg"),
+      "The famous egg salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
+    getImageSrc: () => require("../assets/dish 2.jpg"),
   },
   {
-    title: "Event planner",
+    title: "Sandwiches",
     description:
-      "A mobile application for leisure seekers to discover unique events and activities in their city with a few taps",
-    getImageSrc: () => require("../images/photo4.jpg"),
+      "Our sandwiches is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. Its a must try from our end.",
+    getImageSrc: () => require("../assets/dish 3.jpg"),
+  },
+  {
+    title: "Steak",
+    description:
+      "The famous steak of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.",
+    getImageSrc: () => require("../assets/dish 4.jpg"),
+  },
+  {
+    title: "Lemon Desserts",
+    description:
+      "This comes straight from grandma's recipe book, every last ingredient has been sourced and is as authentic as can be imagined.",
+    getImageSrc: () => require("../assets/dish 5.jpg"),
   },
 ];
 
-const ProjectsSection = () => {
+const Items = () => {
   return (
-    <FullScreenSection
-      backgroundColor="#14532d"
-      isDarkBackground
-      p={8}
-      alignItems="flex-start"
-      spacing={8}
-    >
-      <Heading as="h1" id="projects-section">
-        Featured Projects
-      </Heading>
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(2,minmax(0,1fr))"
-        gridGap={8}
-      >
+        <div>
+          <h1 className="card-heading">This weeks special!</h1>
         {projects.map((project) => (
           <Card
-            key={project.title}
-            title={project.title}
-            description={project.description}
-            imageSrc={project.getImageSrc()}
+          key={project.title}
+          title={project.title}
+          description={project.description}
+          imageSrc={project.getImageSrc()}
           />
         ))}
-      </Box>
-    </FullScreenSection>
+        </div>
   );
 };
 
-export default ProjectsSection; */
+export default Items;

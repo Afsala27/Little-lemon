@@ -1,128 +1,136 @@
-import React from 'react'
-import { useState } from 'react'
-import { Link } from "react-router-dom";
-//import {Bookingform} from './Main';
-//import {useNavigate} from "react-router-dom"
-//import { submitAPI } from './FetchAPI';
-import {Confirmedbooking} from "./Confirmedbooking"
 
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Link } from "react-router-dom";
+
+const initialValues = {
+  Name: "",
+  pickDate: null,
+  time: "",
+  guests: "",
+  occation: "",
+};
+
+const onSubmit = (values) => {
+  //console.log("Form Data", values);
+};
+
+const validationSchema = Yup.object({
+  Name: Yup.string().required("Required"),
+  pickDate: Yup.date().required("Required!").nullable(),
+  time: Yup.string().required("Required"),
+  guests: Yup.string().required("Required"),
+  occation: Yup.string().required("Required"),
+});
 
 export default function Reservation(props) {
-
-  const [date, setDate] = useState("");
-  const [guests, setGuests] = useState("");
-  const [occasion, setOccation] = useState("");
+  const [pickDate, setPickDate] = useState("");
   const [finalTime, setFinalTime] = useState("");
-  const [formData, setFormData] = useState("")
 
-  function handleDateChange(e){
-    setDate(e.target.value);
-
-    var stringify = e.target.value;
-    const date = new Date(stringify)
-
-    props.updateTimes(date);
-
+  function handleDateChange(e) {
+    setPickDate(e);
+    var stringify = e;
+    const pickDate = new Date(stringify);
+    props.updateTimes(pickDate);
     setFinalTime(props.availableTimes.map((times) => <option>{times}</option>));
   }
 
- // function buttonSubmit (e) {
- //   e.preventDefault();
- //   props.submitForm(formData)
- //   console.log(formData);
- //  }
-
- const onChangeHandler = (e) => {
-  setFormData(()=>({
-      ...formData,
-      [e.target.id]: e.target.value
-  }))
-}
-
-
-  const clearForm = () => {
-    setDate("");
-    setGuests("");
-    setOccation("");
-    setFinalTime("");
-  };
-
- const handleSubmit = (e) => {
-  e.preventDefault();
-  console.table(formData)
-  clearForm("")
-  };
-
-  //const navigate = useNavigate();
+  //console.log("Visited", Formik.touched);
 
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <fieldset>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+      handleDateChange={handleDateChange}
+      validateOnMount
+    >
+      {(formik) => {
+        //console.log("Formik props", formik);
+        return (
+          <div className="background">
+            <Form className="form">
+              <fieldset className="App">
+                <div className="Field-item">
+                  <label htmlFor="Name">Name</label>
+                  <Field
+                    type="text"
+                    placeholder="Enter your Name"
+                    id="Name"
+                    name="Name"
+                  />
+                  <ErrorMessage name="Name">
+                    {(errorMsg) => <div className="error">{errorMsg}</div>}
+                  </ErrorMessage>
+                </div>
 
-        <div className="Field">
-        <label htmlFor="date">Select Date</label> <br></br>
-        <input
-          type="date"
-          id="date"
-          name='date'
-          required
-          value={date}
-          onChange={handleDateChange}
-        />
-      </div>
+                <div className="Field-item">
+                  <label htmlFor="date">Select Date</label>
+                  <DatePicker
+                    selected={pickDate}
+                    onChange={handleDateChange}
+                    dateFormat="dd/MM/yyyy"
+                    minDate={new Date()}
+                  />
+                  <ErrorMessage name="date">
+                    {(errorMsg) => <div className="error">{errorMsg}</div>}
+                  </ErrorMessage>
+                </div>
 
+                <div className="Field-item">
+                  <label htmlFor="time">Select Time</label>
+                  <Field as="select" id="time" name="time">
+                    {finalTime}
+                  </Field>
+                  <ErrorMessage name="time">
+                    {(errorMsg) => <div className="error">{errorMsg}</div>}
+                  </ErrorMessage>
+                </div>
 
-      <div className="Field">
-        <label htmlFor="time">Select Time</label>
-        <select
-        id="time"
-        required
-        name='time'
-        >
-        {finalTime}
-        </select>
-      </div>
+                <div className="Field-item">
+                  <label htmlFor="guests">Number of guests</label>
+                  <Field
+                    type="number"
+                    placeholder="Select Number of guests"
+                    min="1"
+                    max="10"
+                    id="guests"
+                    name="guests"
+                  />
+                  <ErrorMessage name="guests">
+                    {(errorMsg) => <div className="error">{errorMsg}</div>}
+                  </ErrorMessage>
+                </div>
 
-
-
-        <div className="Field">
-          <label htmlFor='guests'>Number of guests</label>
-          <input
-          type="number"
-          placeholder="Select Number of guests"
-          min="1"
-          max="10"
-          id="guests"
-          name='guests'
-          required
-          value={guests}
-          onChange={(e) => {
-          setGuests(e.target.value)
-          }}
-          />
-        </div>
-
-
-        <div className="Field">
-          <label htmlFor='occasion'>Occasion</label>
-          <select
-          id="occasion"
-          name='occation'
-          required
-          value={occasion}
-          onChange={onChangeHandler}
-          >
-           <option>Birthday</option>
-           <option>Anniversary</option>
-          </select>
-        </div>
-
-        <button className="primary-button" to="/confirmbooking">
-          Book Table
-        </button>
-        </fieldset>
-      </form>
-    </div>
+                <div className="Field-item">
+                  <label htmlFor="occasion">Occasion</label>
+                  <Field as="select" id="occasion" name="occation">
+                    <option>Select any occation</option>
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                  </Field>
+                  <ErrorMessage name="occation">
+                    {(errorMsg) => <div className="error">{errorMsg}</div>}
+                  </ErrorMessage>
+                </div>
+                <Link to="/confirmbooking">
+                  <button
+                    className="primary-button"
+                    type="submit"
+                    disabled={!formik.isValid}
+                  >
+                    Book Table
+                  </button>
+                </Link>
+              </fieldset>
+            </Form>
+          </div>
+        );
+      }}
+    </Formik>
   );
- }
+}

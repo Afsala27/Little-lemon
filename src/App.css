@@ -3,6 +3,7 @@
 box-sizing: border-box;
 }
 
+
 body {
 display: grid;
 background-color: rgb(255, 255, 255);
@@ -46,22 +47,55 @@ li a.active {
 footer{
   display: flex;
   align-items: center;
-  justify-content: center;
   max-width: none;
-  height: 10rem;
   background: rgb(81, 79, 79);
+  padding: 20px;
+  max-height: 300px;
 }
+.left-footer{
+  padding: 20px;
+  display: flow-root;
+  width: 400px;
+  padding-left: 100px;
+}
+.center-footer{
+  display: flow-root;
+  padding-left: 100px;
+
+}
+.right-footer{
+  padding-left: 100px;
+
+}
+.last-footer{
+  padding-left: 60px;
+  padding-top: 60px;
+}
+.end{
+  position: relative;
+}
+a{
+  text-decoration: none;
+}
+p.link{
+  font-size: 13pt;
+  color: #ffffff;
+}
+
 .header-back{
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: none;
-  height: 30rem;
+  height: 700px;
   background-color: #495E57;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
  .title-set{
   padding-left: 150px;
+  padding-bottom: 50px;
 }
 h1 {
   font-size: 40pt;
@@ -74,12 +108,21 @@ h2 {
   color: #ffffff;
   max-width: 500px
 }
+h3{
+  font-size: 10pt;
+  color: #ffffff;
+  max-width: 300px
+}
 p {
   font-size: 18pt;
   color: #ffffff;
   font-size: clamp(1rem, 3vw, 1.5rem);
   max-width: 500px;
   margin: 1.5rem 0rem;
+  text-align: justify;
+}
+label {
+   font-size: 16pt; 
 }
 
 .primary-button {
@@ -102,27 +145,179 @@ p {
  max-height: fit-content;
  flex: 1;
  padding-top: 0px;
- padding-left: 0px;
- padding-right: 100px;
+ padding-left: 20px;
+ padding-right: 90px;
+ border-radius: 16px;
 }
-form {
+img.image{
+  border-radius: 16px;
+  height: 400px ;
+  width: 300px ;
+}
+.App {
   display: flex;
   flex-direction: column;
   max-width: 200px;
   gap: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: none;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+
 }
-.App{
-  display: grid;
-  place-items: center;
-  padding-top: 30px;
+.form{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: none;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.error{
+  color: red;
+}
+.Field-item {
+  /* /margin-top: 36px; */
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.background {
+  background-image: url('./assets/restaurant.jpg');
+  background-position: right bottom, left top;
+  background-repeat: no-repeat, repeat;
+  padding: 15px; 
+
+}
+.input {
+  width: auto;
+  height: 40px;
+  padding: 0 0 0 16px;
+  border-radius: 9px;
+  outline: none;
+  background-color: #F2F2F2;
+  border: 1px solid #e5e5e500;
+  transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+}
+
+h1.card-heading{
+  display: flex;
+  justify-content: center;
+  max-width: none;
+  font-size: 40px;
+  color: #313131;
+}
+
+.card-back{
+  position: relative;
+  display: inline-block;
+  max-width: none;
+  height: 30rem;
+  padding-top: 50px;
+  padding-left: 100px;
   padding-bottom: 30px;
 }
-@media screen and (max-width: 500px) {
-  nav {
-    float: none;
-    display: flex;
-  }
-  img{
-    display: none;
-  }
+
+.card-container{
+  width: 300px;
+  border-radius: 16px;
+  background-color: dimgrey;
+  overflow: hidden;
+  box-shadow: 0px 0px 25px -5PX;
+  transition: 0.3s;
+  animation: ease-in;
+
+
+}
+.card-container:hover{
+  transform: scale(1.1);
+  box-shadow: 0px 0px 25px 0PX;
+
+}
+
+.image-container img{
+overflow: hidden;
+height: 200PX;
+
+}
+
+.card-content{
+  margin: 1.5rem;
+  margin-top: 0.5rem;
+}
+.des{
+  display: block;
+  font-size: 14px;
+
+}
+.card-title{
+  margin-bottom: 0.5rem;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+
+}
+.btn button{
+  padding: 1rem;
+  border-radius: 16px;
+  min-height: fit-content;
+  background-color: white;
+  border: none;
+  transition: 0.2s;
+  margin-bottom: 0.5rem;
+}
+.btn button:hover{
+  background:#F4CE14;
+  transform: scale(1);
+}
+
+section {
+  display: flex;
+  background: #001923;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+section .layout {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  padding: 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+}
+
+section .layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+section .layout h1 {
+  position: relative;
+  text-align: center;
+  color: rgb(36, 168, 36);
+}
+
+section .layout p {
+  position: relative;
+  color: #fff;
+}
+
+section .layout button {
+  position: relative;
 }
